@@ -1,0 +1,68 @@
+services:
+  oc-a:
+    image: coollabsio/openclaw:latest
+    container_name: oc-a
+    restart: unless-stopped
+    env_file:
+      - /opt/openclaw-fleet/workers/a/env/worker.env
+    environment:
+      OPENCLAW_NO_RESPAWN: "1"
+    entrypoint: ["/bin/bash","/app/scripts/entrypoint-worker.sh"]
+    ports:
+      - "18081:8080"
+    volumes:
+      - /opt/openclaw-fleet/workers/a/data:/data
+      - /opt/openclaw-fleet/workers/a/workspace:/data/workspace
+      - /opt/openclaw-fleet/workers/a/config/openclaw.json:/app/config/openclaw.json:ro
+      - /opt/openclaw-fleet/compose/entrypoint-worker.sh:/app/scripts/entrypoint-worker.sh:ro
+
+  oc-b:
+    image: coollabsio/openclaw:latest
+    container_name: oc-b
+    restart: unless-stopped
+    env_file:
+      - /opt/openclaw-fleet/workers/b/env/worker.env
+    environment:
+      OPENCLAW_NO_RESPAWN: "1"
+    entrypoint: ["/bin/bash","/app/scripts/entrypoint-worker.sh"]
+    ports:
+      - "18082:8080"
+    volumes:
+      - /opt/openclaw-fleet/workers/b/data:/data
+      - /opt/openclaw-fleet/workers/b/workspace:/data/workspace
+      - /opt/openclaw-fleet/workers/b/config/openclaw.json:/app/config/openclaw.json:ro
+      - /opt/openclaw-fleet/compose/entrypoint-worker.sh:/app/scripts/entrypoint-worker.sh:ro
+
+  oc-c:
+    image: coollabsio/openclaw:latest
+    container_name: oc-c
+    restart: unless-stopped
+    env_file:
+      - /opt/openclaw-fleet/workers/c/env/worker.env
+    environment:
+      OPENCLAW_NO_RESPAWN: "1"
+    entrypoint: ["/bin/bash","/app/scripts/entrypoint-worker.sh"]
+    ports:
+      - "18083:8080"
+    volumes:
+      - /opt/openclaw-fleet/workers/c/data:/data
+      - /opt/openclaw-fleet/workers/c/workspace:/data/workspace
+      - /opt/openclaw-fleet/workers/c/config/openclaw.json:/app/config/openclaw.json:ro
+      - /opt/openclaw-fleet/compose/entrypoint-worker.sh:/app/scripts/entrypoint-worker.sh:ro
+
+  oc-d:
+    image: coollabsio/openclaw:latest
+    container_name: oc-d
+    restart: unless-stopped
+    env_file:
+      - /opt/openclaw-fleet/workers/d/env/worker.env
+    environment:
+      OPENCLAW_NO_RESPAWN: "1"
+    entrypoint: ["/bin/bash","/app/scripts/entrypoint-worker.sh"]
+    ports:
+      - "18084:8080"
+    volumes:
+      - /opt/openclaw-fleet/workers/d/data:/data
+      - /opt/openclaw-fleet/workers/d/workspace:/data/workspace
+      - /opt/openclaw-fleet/workers/d/config/openclaw.json:/app/config/openclaw.json:ro
+      - /opt/openclaw-fleet/compose/entrypoint-worker.sh:/app/scripts/entrypoint-worker.sh:ro
